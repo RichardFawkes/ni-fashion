@@ -24,77 +24,101 @@ export default function Header() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <span className={`text-2xl ${isScrolled ? 'text-black' : 'text-black'} fashion-display`}>
-              <span className="font-semibold">NI</span>FASHION
+            <span className={`text-2xl font-bold ${isScrolled ? 'text-black' : 'text-white'}`}>
+              <span className="text-green-500">NI</span>FASHION
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/" className={`text-sm transition-colors duration-300 hover:text-black fashion-accent ${isScrolled ? 'text-gray-700' : 'text-gray-800'}`}>
+            <Link href="/" className={`text-sm font-medium transition-colors duration-300 hover:text-green-500 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
               Home
             </Link>
-            <Link href="#catalog" className={`text-sm transition-colors duration-300 hover:text-black fashion-accent ${isScrolled ? 'text-gray-700' : 'text-gray-800'}`}>
-              Catálogo
+            <Link href="#catalog" className={`text-sm font-medium transition-colors duration-300 hover:text-green-500 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+              Novidades
             </Link>
-            <Link href="#cropped" className={`text-sm transition-colors duration-300 hover:text-black fashion-accent ${isScrolled ? 'text-gray-700' : 'text-gray-800'}`}>
+            <Link href="#catalog" className={`text-sm font-medium transition-colors duration-300 hover:text-green-500 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+              Feminino
+            </Link>
+            <Link href="#cropped" className={`text-sm font-medium transition-colors duration-300 hover:text-green-500 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
               Croppeds
             </Link>
-            <Link href="/image-generator" className={`text-sm transition-colors duration-300 hover:text-black fashion-accent ${isScrolled ? 'text-gray-700' : 'text-gray-800'}`}>
-              Gerenciador
+            <Link href="#catalog" className={`text-sm font-medium transition-colors duration-300 hover:text-green-500 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+              Ofertas
             </Link>
             <Link 
               href="https://wa.me/5511999999999" 
               target="_blank"
-              className="ml-4 px-4 py-2 bg-black text-white text-sm uppercase-spaced hover:bg-gray-800 transition-colors duration-300"
+              className={`ml-4 px-5 py-2 text-white text-sm font-medium rounded-sm hover:bg-green-600 transition-colors duration-300 ${isScrolled ? 'bg-green-500' : 'bg-green-500'}`}
             >
-              Contato
+              CONTATO
             </Link>
           </nav>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-gray-800 focus:outline-none"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
+          <div className="flex items-center md:hidden">
+            {/* Ícone de carrinho */}
+            <button className={`mr-4 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+              </svg>
+            </button>
+            
+            {/* Botão do Menu */}
+            <button 
+              className={`focus:outline-none ${isScrolled ? 'text-gray-800' : 'text-white'}`}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
-            <nav className="flex flex-col space-y-3 mt-4">
-              <Link href="/" className="text-gray-800 py-2 hover:text-black fashion-accent" onClick={() => setIsMobileMenuOpen(false)}>
+          <div className="md:hidden bg-white mt-4 rounded-sm shadow-lg border border-gray-100 absolute left-0 right-0 mx-4">
+            <nav className="flex flex-col py-2">
+              <Link href="/" className="text-gray-800 hover:bg-gray-50 py-3 px-4 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
                 Home
               </Link>
-              <Link href="#catalog" className="text-gray-800 py-2 hover:text-black fashion-accent" onClick={() => setIsMobileMenuOpen(false)}>
-                Catálogo
+              <Link href="#catalog" className="text-gray-800 hover:bg-gray-50 py-3 px-4 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
+                Novidades
               </Link>
-              <Link href="#cropped" className="text-gray-800 py-2 hover:text-black fashion-accent" onClick={() => setIsMobileMenuOpen(false)}>
+              <Link href="#catalog" className="text-gray-800 hover:bg-gray-50 py-3 px-4 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
+                Feminino
+              </Link>
+              <Link href="#cropped" className="text-gray-800 hover:bg-gray-50 py-3 px-4 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
                 Croppeds
               </Link>
-              <Link href="/image-generator" className="text-gray-800 py-2 hover:text-black fashion-accent" onClick={() => setIsMobileMenuOpen(false)}>
-                Gerenciador
+              <Link href="#catalog" className="text-gray-800 hover:bg-gray-50 py-3 px-4 font-medium" onClick={() => setIsMobileMenuOpen(false)}>
+                Ofertas
               </Link>
+              <div className="border-t border-gray-100 my-2"></div>
               <Link 
                 href="https://wa.me/5511999999999" 
                 target="_blank"
-                className="mt-2 bg-black text-white py-2 px-4 text-center hover:bg-gray-800 transition-colors duration-300 uppercase-spaced"
+                className="m-3 bg-green-500 text-white py-2 px-4 text-center rounded-sm font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Contato
+                CONTATO
               </Link>
             </nav>
           </div>
         )}
       </div>
+      
+      {/* Barra de promoção (Netshoes style) */}
+      {isScrolled && (
+        <div className="bg-yellow-500 py-1 text-center text-xs font-bold text-gray-900">
+          FRETE GRÁTIS NAS COMPRAS ACIMA DE R$ 99 • APROVEITE NOSSAS OFERTAS COM ATÉ 70% OFF
+        </div>
+      )}
     </header>
   );
 } 
