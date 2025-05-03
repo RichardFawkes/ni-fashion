@@ -26,12 +26,12 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center">
           <div className="lg:w-1/2 mb-12 lg:mb-0 animate-fade-in-up text-white">
             <div className="inline-flex items-center space-x-2 mb-6">
-              <span className="w-8 h-0.5 bg-green-500"></span>
-              <span className="text-green-500 text-sm font-bold uppercase tracking-wider">Nova Coleção 2023</span>
+              <span className="w-8 h-0.5 bg-white"></span>
+              <span className="text-white text-sm font-bold uppercase tracking-wider">Nova Coleção 2023</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight font-bold">
-              Estilo que <br /><span className="text-green-500">Define</span> Você
+              Estilo que <br /><span className="text-white">Define</span> Você
             </h1>
             
             <p className="text-lg text-gray-300 mb-8 max-w-lg">
@@ -42,7 +42,7 @@ export default function Hero() {
             <div className="flex flex-wrap gap-4">
               <Link 
                 href="#catalog" 
-                className="bg-green-500 hover:bg-green-600 text-white py-3 px-8 rounded-sm transition-all duration-300 inline-flex items-center font-bold shadow-lg"
+                className="bg-white hover:bg-gray-200 text-black py-3 px-8 rounded-sm transition-all duration-300 inline-flex items-center font-bold shadow-lg"
               >
                 Ver Ofertas
                 <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -63,7 +63,7 @@ export default function Hero() {
             <div className="grid grid-cols-3 gap-2 mt-12">
               <div className="flex items-center">
                 <div className="rounded-full bg-white/10 p-2 mr-3">
-                  <svg className="w-4 h-4 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                   </svg>
                 </div>
@@ -71,7 +71,7 @@ export default function Hero() {
               </div>
               <div className="flex items-center">
                 <div className="rounded-full bg-white/10 p-2 mr-3">
-                  <svg className="w-4 h-4 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                   </svg>
                 </div>
@@ -79,7 +79,7 @@ export default function Hero() {
               </div>
               <div className="flex items-center">
                 <div className="rounded-full bg-white/10 p-2 mr-3">
-                  <svg className="w-4 h-4 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M12 5l7 7-7 7"></path>
                   </svg>
                 </div>
@@ -91,7 +91,7 @@ export default function Hero() {
           <div className="lg:w-1/2 flex justify-center relative">
             {/* Card destacado de produto */}
             <div className="bg-white/5 backdrop-blur-sm p-5 rounded-sm shadow-xl border border-white/10 transform lg:rotate-3 hover:rotate-0 transition-transform duration-500">
-              <div className="absolute -top-4 -right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-sm">
+              <div className="absolute -top-4 -right-4 bg-white text-black text-xs font-bold px-3 py-1 rounded-sm">
                 30% OFF
               </div>
               <div className="relative h-64 w-56 mb-4 overflow-hidden">
@@ -104,9 +104,9 @@ export default function Hero() {
               <div className="flex justify-between items-center">
                 <div>
                   <span className="text-gray-400 text-xs line-through">R$ 299,99</span>
-                  <p className="text-green-500 font-bold">R$ 199,99</p>
+                  <p className="text-white font-bold">R$ 199,99</p>
                 </div>
-                <button className="bg-green-500 hover:bg-green-600 text-white text-xs py-1 px-3 rounded-sm transition-colors duration-300">
+                <button className="bg-white hover:bg-gray-200 text-black text-xs py-1 px-3 rounded-sm transition-colors duration-300">
                   Comprar
                 </button>
               </div>

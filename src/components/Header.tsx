@@ -25,31 +25,31 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <span className={`text-2xl font-bold ${isScrolled ? 'text-black' : 'text-white'}`}>
-              <span className="text-green-500">NI</span>FASHION
+              <span className="text-white bg-black px-1">NI</span>FASHION
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/" className={`text-sm font-medium transition-colors duration-300 hover:text-green-500 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+            <Link href="/" className={`text-sm font-medium transition-colors duration-300 hover:text-gray-600 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
               Home
             </Link>
-            <Link href="#catalog" className={`text-sm font-medium transition-colors duration-300 hover:text-green-500 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+            <Link href="#catalog" className={`text-sm font-medium transition-colors duration-300 hover:text-gray-600 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
               Novidades
             </Link>
-            <Link href="#catalog" className={`text-sm font-medium transition-colors duration-300 hover:text-green-500 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+            <Link href="#catalog" className={`text-sm font-medium transition-colors duration-300 hover:text-gray-600 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
               Feminino
             </Link>
-            <Link href="#cropped" className={`text-sm font-medium transition-colors duration-300 hover:text-green-500 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+            <Link href="#cropped" className={`text-sm font-medium transition-colors duration-300 hover:text-gray-600 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
               Croppeds
             </Link>
-            <Link href="#catalog" className={`text-sm font-medium transition-colors duration-300 hover:text-green-500 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
+            <Link href="#catalog" className={`text-sm font-medium transition-colors duration-300 hover:text-gray-600 ${isScrolled ? 'text-gray-800' : 'text-white'}`}>
               Ofertas
             </Link>
             <Link 
               href="https://wa.me/5511999999999" 
               target="_blank"
-              className={`ml-4 px-5 py-2 text-white text-sm font-medium rounded-sm hover:bg-green-600 transition-colors duration-300 ${isScrolled ? 'bg-green-500' : 'bg-green-500'}`}
+              className={`ml-4 px-5 py-2 text-white text-sm font-medium rounded-sm hover:bg-gray-700 transition-colors duration-300 ${isScrolled ? 'bg-black' : 'bg-black'}`}
             >
               CONTATO
             </Link>
@@ -103,7 +103,7 @@ export default function Header() {
               <Link 
                 href="https://wa.me/5511999999999" 
                 target="_blank"
-                className="m-3 bg-green-500 text-white py-2 px-4 text-center rounded-sm font-medium"
+                className="m-3 bg-black text-white py-2 px-4 text-center rounded-sm font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 CONTATO
@@ -115,7 +115,7 @@ export default function Header() {
       
       {/* Barra de promoção (Netshoes style) */}
       {isScrolled && (
-        <div className="bg-yellow-500 py-1 text-center text-xs font-bold text-gray-900">
+        <div className="bg-black py-1 text-center text-xs font-bold text-white">
           FRETE GRÁTIS NAS COMPRAS ACIMA DE R$ 99 • APROVEITE NOSSAS OFERTAS COM ATÉ 70% OFF
         </div>
       )}

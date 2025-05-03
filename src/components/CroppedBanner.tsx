@@ -16,12 +16,12 @@ export default function CroppedBanner() {
         {/* Cabeçalho da seção */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center mb-4">
-            <span className="h-px w-8 bg-green-500"></span>
-            <span className="text-green-500 text-sm font-bold uppercase tracking-wider mx-3">Destaques</span>
-            <span className="h-px w-8 bg-green-500"></span>
+            <span className="h-px w-8 bg-black"></span>
+            <span className="text-black text-sm font-bold uppercase tracking-wider mx-3">Destaques</span>
+            <span className="h-px w-8 bg-black"></span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Coleção de <span className="text-green-500">Croppeds</span>
+            Coleção de <span className="text-black">Croppeds</span>
           </h2>
           <p className="text-gray-600 max-w-lg mx-auto">
             Confira os modelos mais vendidos com descontos especiais por tempo limitado.
@@ -35,7 +35,7 @@ export default function CroppedBanner() {
           <div className="group">
             <div className="bg-white rounded-sm shadow-sm overflow-hidden relative">
               {/* Badge de desconto */}
-              <div className="absolute top-0 right-0 z-10 bg-yellow-500 text-gray-900 text-xs font-bold px-2 py-1">
+              <div className="absolute top-0 right-0 z-10 bg-black text-white text-xs font-bold px-2 py-1">
                 30% OFF
               </div>
               
@@ -58,10 +58,10 @@ export default function CroppedBanner() {
                 <div className="mb-3">
                   <span className="text-xs text-gray-500 line-through">R$ 129,90</span>
                   <p className="text-lg font-bold text-gray-900">R$ 89,90</p>
-                  <p className="text-xs text-green-600">Em até 3x de R$ 29,96</p>
+                  <p className="text-xs text-gray-600">Em até 3x de R$ 29,96</p>
                 </div>
                 
-                <button className="w-full bg-green-500 text-white text-sm font-bold py-2 rounded-sm hover:bg-green-600 transition-colors">
+                <button className="w-full bg-black text-white text-sm font-bold py-2 rounded-sm hover:bg-gray-800 transition-colors">
                   COMPRAR
                 </button>
               </div>
@@ -72,7 +72,7 @@ export default function CroppedBanner() {
           <div className="group">
             <div className="bg-white rounded-sm shadow-sm overflow-hidden relative">
               {/* Badge de novidade */}
-              <div className="absolute top-0 left-0 z-10 bg-green-600 text-white text-xs font-bold px-2 py-1">
+              <div className="absolute top-0 left-0 z-10 bg-black text-white text-xs font-bold px-2 py-1">
                 NOVO
               </div>
               
@@ -94,10 +94,10 @@ export default function CroppedBanner() {
                 
                 <div className="mb-3">
                   <p className="text-lg font-bold text-gray-900">R$ 149,90</p>
-                  <p className="text-xs text-green-600">Em até 5x de R$ 29,98</p>
+                  <p className="text-xs text-gray-600">Em até 5x de R$ 29,98</p>
                 </div>
                 
-                <button className="w-full bg-green-500 text-white text-sm font-bold py-2 rounded-sm hover:bg-green-600 transition-colors">
+                <button className="w-full bg-black text-white text-sm font-bold py-2 rounded-sm hover:bg-gray-800 transition-colors">
                   COMPRAR
                 </button>
               </div>
@@ -108,7 +108,7 @@ export default function CroppedBanner() {
           <div className="group">
             <div className="bg-white rounded-sm shadow-sm overflow-hidden relative">
               {/* Badge de exclusivo */}
-              <div className="absolute top-0 left-0 z-10 bg-purple-600 text-white text-xs font-bold px-2 py-1">
+              <div className="absolute top-0 left-0 z-10 bg-gray-700 text-white text-xs font-bold px-2 py-1">
                 EXCLUSIVO
               </div>
               
@@ -131,10 +131,10 @@ export default function CroppedBanner() {
                 <div className="mb-3">
                   <span className="text-xs text-gray-500 line-through">R$ 199,90</span>
                   <p className="text-lg font-bold text-gray-900">R$ 139,90</p>
-                  <p className="text-xs text-green-600">Em até 6x de R$ 23,31</p>
+                  <p className="text-xs text-gray-600">Em até 6x de R$ 23,31</p>
                 </div>
                 
-                <button className="w-full bg-green-500 text-white text-sm font-bold py-2 rounded-sm hover:bg-green-600 transition-colors">
+                <button className="w-full bg-black text-white text-sm font-bold py-2 rounded-sm hover:bg-gray-800 transition-colors">
                   COMPRAR
                 </button>
               </div>
@@ -145,7 +145,7 @@ export default function CroppedBanner() {
           <div className="group">
             <div className="bg-white rounded-sm shadow-sm overflow-hidden relative">
               {/* Badge de frete grátis */}
-              <div className="absolute top-0 right-0 z-10 bg-blue-600 text-white text-xs font-bold px-2 py-1">
+              <div className="absolute top-0 right-0 z-10 bg-gray-600 text-white text-xs font-bold px-2 py-1">
                 FRETE GRÁTIS
               </div>
               
@@ -168,10 +168,10 @@ export default function CroppedBanner() {
                 <div className="mb-3">
                   <span className="text-xs text-gray-500 line-through">R$ 159,90</span>
                   <p className="text-lg font-bold text-gray-900">R$ 99,90</p>
-                  <p className="text-xs text-green-600">Em até 3x de R$ 33,30</p>
+                  <p className="text-xs text-gray-600">Em até 3x de R$ 33,30</p>
                 </div>
                 
-                <button className="w-full bg-green-500 text-white text-sm font-bold py-2 rounded-sm hover:bg-green-600 transition-colors">
+                <button className="w-full bg-black text-white text-sm font-bold py-2 rounded-sm hover:bg-gray-800 transition-colors">
                   COMPRAR
                 </button>
               </div>
@@ -183,7 +183,7 @@ export default function CroppedBanner() {
         <div className="text-center mt-10">
           <Link 
             href="/croppeds"
-            className="inline-flex items-center bg-transparent hover:bg-green-500 text-green-500 hover:text-white py-2 px-6 border border-green-500 hover:border-transparent rounded-sm font-medium transition-colors duration-300"
+            className="inline-flex items-center bg-transparent hover:bg-black text-black hover:text-white py-2 px-6 border border-black hover:border-transparent rounded-sm font-medium transition-colors duration-300"
           >
             Ver todos os modelos
             <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
