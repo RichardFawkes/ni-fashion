@@ -104,8 +104,8 @@ export default function EditProductClient({ params }: EditProductClientProps) {
       
       // Upload da imagem se foi alterada
       if (imageChanged && imageFile) {
-        const storedImage = await imageService.saveImage(imageFile);
-        imageUrl = storedImage.base64;
+        const storedImage = await imageService.saveImage(imageFile, formData.category);
+        imageUrl = storedImage.serverPath || storedImage.base64;
       }
 
       // Atualizar produto
@@ -280,10 +280,13 @@ export default function EditProductClient({ params }: EditProductClientProps) {
                       <div className="w-full h-56 relative border border-gray-200 rounded-md overflow-hidden bg-white shadow-sm">
                         {imagePreview && (
                           <div className="w-full h-full relative">
-                            <img
+                            <Image
                               src={imagePreview}
                               alt="Preview"
-                              className="object-contain w-full h-full"
+                              fill
+                              sizes="(max-width: 768px) 100vw, 300px"
+                              className="object-contain"
+                              unoptimized={imagePreview.startsWith('data:')}
                             />
                           </div>
                         )}

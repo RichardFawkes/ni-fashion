@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import { Product } from '../../../../data/products';
 
 export async function POST(request: Request) {
   try {

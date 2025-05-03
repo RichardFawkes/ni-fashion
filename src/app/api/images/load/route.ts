@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
-import { StoredImage } from '../../../services/imageService';
 
 export async function GET() {
   try {
@@ -18,7 +17,7 @@ export async function GET() {
 
     // Ler dados do arquivo
     const fileContent = fs.readFileSync(filePath, 'utf-8');
-    const images: StoredImage[] = JSON.parse(fileContent);
+    const images = JSON.parse(fileContent);
 
     return NextResponse.json({
       success: true,

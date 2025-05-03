@@ -6,7 +6,7 @@ import { StoredImage } from './imageService';
 // Interface para a resposta da API
 interface ApiResponse {
   success: boolean;
-  data?: any;
+  data?: Product[] | StoredImage[] | null;
   error?: string;
 }
 

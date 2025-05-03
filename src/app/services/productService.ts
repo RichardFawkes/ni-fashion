@@ -30,8 +30,11 @@ export const initializeProducts = async (defaultProducts: Product[]) => {
     try {
       const response = await loadProductsFromFile();
       if (response.success && response.data && response.data.length > 0) {
-        saveProducts(response.data);
-        return;
+        // Verificar se os dados são do tipo Product[]
+        if (isProductArray(response.data)) {
+          saveProducts(response.data);
+          return;
+        }
       }
     } catch (error) {
       console.error('Erro ao carregar produtos do arquivo:', error);
@@ -41,6 +44,22 @@ export const initializeProducts = async (defaultProducts: Product[]) => {
     saveProducts(defaultProducts);
   }
 };
+
+// Função auxiliar para verificar se um array é do tipo Product[]
+function isProductArray(data: unknown[]): data is Product[] {
+  return data.every(item => 
+    typeof item === 'object' &&
+    item !== null &&
+    'id' in item &&
+    'name' in item &&
+    'description' in item &&
+    'price' in item &&
+    'sizes' in item &&
+    'colors' in item &&
+    'category' in item &&
+    'imageUrl' in item
+  );
+}
 
 // Função para salvar todos os produtos
 export const saveProducts = async (products: Product[]) => {
@@ -100,4 +119,10 @@ export const getProductById = (productId: string): Product | undefined => {
 // Função para gerar um ID único para novos produtos
 export const generateProductId = (): string => {
   return Date.now().toString();
+};
+
+// Função para obter produtos por categoria
+export const getProductsByCategory = (category: string): Product[] => {
+  const products = getAllProducts();
+  return products.filter(product => product.category === category);
 }; 

@@ -59,6 +59,16 @@ export default function AdminProducts() {
     product.category.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Função auxiliar para processar URLs de imagens (base64 ou caminho do servidor)
+  const getImageSrc = (imageUrl: string) => {
+    // Se começar com / é um caminho do servidor, caso contrário é base64 ou URL externa
+    if (imageUrl.startsWith('/')) {
+      return imageUrl;
+    }
+    // Se começar com data: é base64, caso contrário é URL externa
+    return imageUrl.startsWith('data:') ? imageUrl : `${imageUrl}`;
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <header className="bg-indigo-700 shadow-md">
@@ -160,12 +170,15 @@ export default function AdminProducts() {
                         {product.id.substring(0, 8)}...
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="h-12 w-12 rounded-md overflow-hidden bg-gray-100 border border-gray-200">
+                        <div className="h-12 w-12 rounded-md overflow-hidden bg-gray-100 border border-gray-200 relative">
                           {product.imageUrl && (
-                            <img 
-                              src={product.imageUrl.startsWith('data:') ? product.imageUrl : `${product.imageUrl}`} 
+                            <Image
+                              src={getImageSrc(product.imageUrl)}
                               alt={product.name}
-                              className="h-full w-full object-cover"
+                              fill
+                              sizes="48px"
+                              className="object-cover"
+                              unoptimized={product.imageUrl.startsWith('data:')}
                             />
                           )}
                         </div>

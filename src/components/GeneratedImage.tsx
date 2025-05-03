@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 interface GeneratedImageProps {
   text: string;
@@ -22,7 +22,8 @@ export default function GeneratedImage({
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   // Cores por categoria - Paleta monocromática elegante
-  const getCategoryColor = (category: string) => {
+  // Using useCallback to memoize the function
+  const getCategoryColor = useCallback((category: string) => {
     const colors: Record<string, string> = {
       'Cropped': '#f5f5f5', // Branco levemente acinzentado
       'Novidades': '#f0f0f0', // Cinza muito claro
@@ -31,10 +32,11 @@ export default function GeneratedImage({
     };
     
     return colors[category] || backgroundColor;
-  };
+  }, [backgroundColor]);
 
   // Cor secundária para decoração - Tons de cinza
-  const getSecondaryColor = (category: string) => {
+  // Using useCallback to memoize the function
+  const getSecondaryColor = useCallback((category: string) => {
     const colors: Record<string, string> = {
       'Cropped': '#333333', // Cinza escuro
       'Novidades': '#444444', // Cinza médio-escuro
@@ -43,7 +45,7 @@ export default function GeneratedImage({
     };
     
     return colors[category] || '#333333';
-  };
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -160,7 +162,7 @@ export default function GeneratedImage({
       ctx.fillText('NOVO', width - 50, 33);
     }
 
-  }, [text, category, width, height, backgroundColor, textColor]);
+  }, [text, category, width, height, backgroundColor, textColor, getCategoryColor, getSecondaryColor]);
 
   return (
     <canvas 

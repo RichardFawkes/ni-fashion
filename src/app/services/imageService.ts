@@ -1,7 +1,8 @@
 "use client";
 import { saveImagesToFile, loadImagesFromFile } from './jsonFileService';
+import { uploadImageFile } from './fileUploadService';
 
-// Chave para armazenar as imagens no localStorage
+// Chave para armazenar os metadados das imagens no localStorage
 const IMAGES_STORAGE_KEY = 'ni-fashion-images';
 
 // Interface para os dados da imagem
@@ -10,6 +11,7 @@ export interface StoredImage {
   base64: string;
   name: string;
   mimeType: string;
+  serverPath?: string;
 }
 
 // Função para converter um arquivo para base64
@@ -40,8 +42,23 @@ export const initializeImages = async () => {
 };
 
 // Função para salvar uma imagem
-export const saveImage = async (file: File): Promise<StoredImage> => {
+export const saveImage = async (file: File, category?: string): Promise<StoredImage> => {
   try {
+    // 1. Fazer upload do arquivo para o servidor
+    const formData = new FormData();
+    formData.append('image', file);
+    if (category) {
+      formData.append('category', category);
+    }
+    
+    // Upload do arquivo físico
+    const uploadResult = await uploadImageFile(file);
+    
+    if (!uploadResult.success || !uploadResult.data) {
+      throw new Error(uploadResult.error || 'Falha ao fazer upload da imagem');
+    }
+    
+    // 2. Criar metadados da imagem (incluindo base64 para compatibilidade com o código existente)
     const base64 = await fileToBase64(file);
     const id = Date.now().toString();
     
@@ -49,17 +66,18 @@ export const saveImage = async (file: File): Promise<StoredImage> => {
       id,
       base64,
       name: file.name,
-      mimeType: file.type
+      mimeType: file.type,
+      serverPath: uploadResult.data.path
     };
     
-    // Obter imagens existentes
+    // 3. Obter imagens existentes e adicionar a nova
     const images = getAllImages();
     images.push(imageData);
     
-    // Salvar no localStorage
+    // 4. Salvar metadados no localStorage
     localStorage.setItem(IMAGES_STORAGE_KEY, JSON.stringify(images));
     
-    // Salvar no arquivo JSON
+    // 5. Salvar metadados no arquivo JSON
     await saveImagesToFile(images);
     
     return imageData;
@@ -90,6 +108,17 @@ export const getImageById = (id: string): StoredImage | undefined => {
   return images.find(img => img.id === id);
 };
 
+// Função para obter o URL de exibição de uma imagem
+export const getDisplayImageUrl = (image: StoredImage): string => {
+  // Priorizar o caminho do servidor se existir
+  if (image.serverPath) {
+    return image.serverPath;
+  }
+  
+  // Caso contrário, usar o base64
+  return image.base64;
+};
+
 // Função para remover uma imagem
 export const removeImage = async (id: string): Promise<boolean> => {
   const images = getAllImages();
@@ -101,11 +130,14 @@ export const removeImage = async (id: string): Promise<boolean> => {
     // Salvar no arquivo JSON
     try {
       await saveImagesToFile(filteredImages);
+      
+      // Nota: Não removemos o arquivo físico do servidor para evitar problemas
+      // com produtos que podem estar usando a mesma imagem
+      
+      return true;
     } catch (error) {
       console.error('Erro ao atualizar arquivo de imagens:', error);
     }
-    
-    return true;
   }
   
   return false;
