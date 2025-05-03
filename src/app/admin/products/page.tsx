@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Product } from '../../../data/products';
@@ -21,10 +21,30 @@ export default function AdminProducts() {
     setLoading(false);
   }, []);
 
-  const handleDeleteProduct = (productId: string) => {
-    if (window.confirm('Tem certeza que deseja excluir este produto?')) {
-      productService.removeProduct(productId);
-      setProducts(productService.getAllProducts());
+  const loadProducts = () => {
+    setLoading(true);
+    const allProducts = productService.getAllProducts();
+    setProducts(allProducts);
+    setLoading(false);
+  };
+
+  const handleDeleteProduct = async (productId: string) => {
+    const confirmDelete = window.confirm('Tem certeza que deseja excluir este produto?');
+    
+    if (confirmDelete) {
+      try {
+        const success = await productService.removeProduct(productId);
+        
+        if (success) {
+          alert('Produto excluído com sucesso!');
+          loadProducts();
+        } else {
+          alert('Produto não encontrado.');
+        }
+      } catch (error) {
+        console.error('Erro ao excluir produto:', error);
+        alert('Ocorreu um erro ao excluir o produto.');
+      }
     }
   };
 

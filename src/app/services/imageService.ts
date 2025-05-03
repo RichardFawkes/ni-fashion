@@ -1,4 +1,5 @@
 "use client";
+import { saveImagesToFile, loadImagesFromFile } from './jsonFileService';
 
 // Chave para armazenar as imagens no localStorage
 const IMAGES_STORAGE_KEY = 'ni-fashion-images';
@@ -21,6 +22,23 @@ export const fileToBase64 = (file: File): Promise<string> => {
   });
 };
 
+// Função para inicializar as imagens carregando do arquivo se disponível
+export const initializeImages = async () => {
+  if (typeof window === 'undefined') return;
+  
+  const stored = localStorage.getItem(IMAGES_STORAGE_KEY);
+  if (!stored) {
+    try {
+      const response = await loadImagesFromFile();
+      if (response.success && response.data && response.data.length > 0) {
+        localStorage.setItem(IMAGES_STORAGE_KEY, JSON.stringify(response.data));
+      }
+    } catch (error) {
+      console.error('Erro ao carregar imagens do arquivo:', error);
+    }
+  }
+};
+
 // Função para salvar uma imagem
 export const saveImage = async (file: File): Promise<StoredImage> => {
   try {
@@ -40,6 +58,9 @@ export const saveImage = async (file: File): Promise<StoredImage> => {
     
     // Salvar no localStorage
     localStorage.setItem(IMAGES_STORAGE_KEY, JSON.stringify(images));
+    
+    // Salvar no arquivo JSON
+    await saveImagesToFile(images);
     
     return imageData;
   } catch (error) {
@@ -70,12 +91,20 @@ export const getImageById = (id: string): StoredImage | undefined => {
 };
 
 // Função para remover uma imagem
-export const removeImage = (id: string): boolean => {
+export const removeImage = async (id: string): Promise<boolean> => {
   const images = getAllImages();
   const filteredImages = images.filter(img => img.id !== id);
   
   if (images.length !== filteredImages.length) {
     localStorage.setItem(IMAGES_STORAGE_KEY, JSON.stringify(filteredImages));
+    
+    // Salvar no arquivo JSON
+    try {
+      await saveImagesToFile(filteredImages);
+    } catch (error) {
+      console.error('Erro ao atualizar arquivo de imagens:', error);
+    }
+    
     return true;
   }
   

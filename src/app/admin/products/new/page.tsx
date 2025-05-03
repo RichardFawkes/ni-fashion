@@ -73,8 +73,9 @@ export default function NewProduct() {
       };
 
       // Adicionar produto
-      productService.addProduct(newProduct);
+      await productService.addProduct(newProduct);
       
+      alert('Produto salvo com sucesso no localStorage e em arquivo JSON!');
       router.push('/admin/products');
     } catch (error) {
       console.error('Erro ao salvar produto:', error);
