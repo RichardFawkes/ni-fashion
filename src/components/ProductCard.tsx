@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { Product } from '@/data/products';
 import GeneratedImage from './GeneratedImage';
 
@@ -11,10 +10,8 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, whatsappNumber }: ProductCardProps) {
-  // Função para formatar preço de string para exibição 
-  const formatPrice = (priceStr: string) => {
-    return priceStr; // Já está formatado como R$ X,XX no modelo de dados
-  };
+  // Verifica se o produto é novo (simplificado)
+  const isNew = product.category === 'Novidades' || product.category === 'Cropped';
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent(
@@ -22,9 +19,6 @@ export default function ProductCard({ product, whatsappNumber }: ProductCardProp
     );
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
   };
-
-  // Verifica se o produto é novo (simplificado)
-  const isNew = product.category === 'Novidades' || product.category === 'Cropped';
 
   return (
     <div 
