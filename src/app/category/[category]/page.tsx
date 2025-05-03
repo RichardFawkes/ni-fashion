@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import CategoryPageClient from './CategoryPageClient';
 
 type Props = {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
